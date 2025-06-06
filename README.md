@@ -41,7 +41,7 @@ AIPoweredCliTool/
 ```
 ---
 
-## How To Run
+## Setup & Installation
 
 1. Clone the Repo
 ```
@@ -61,3 +61,15 @@ AWS_SECRET_ACCESS_KEY=your_secret_key
 AWS_REGION=us-east-1
 BEDROCK_MODEL_ID=your-model-id-of-choice
 ```
+---
+
+## Usage Guide
+1. Run The CLI
+```
+python src/cli.py
+```
+The CLI will:
+- Monitor the input/ directory for new ``.txt`` files.
+- Upon detecting a file, call the LLM and save the summary as a new file in ``summaries/``
+
+
