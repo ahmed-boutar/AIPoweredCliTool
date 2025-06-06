@@ -4,6 +4,14 @@ This project is a **command-line interface (CLI) tool** that leverages a **large
 
 When you add a `.txt` file to the `input/` folder, a summary is automatically generated and saved under the `summaries/` folder with the same name suffixed by `_summary.txt`.
 
+What I used to make this project work:
+- Amazon Bedrock (LLM-as-a-service)
+- Python (used 3.9)
+- Click (CLI framework)
+- watchdog (library for directory monitoring)
+- pytest + pytest-cov (Testing & coverage report)
+- logging (library for system event tracking)
+
 ---
 
 ## Use Cases
@@ -69,7 +77,25 @@ BEDROCK_MODEL_ID=your-model-id-of-choice
 python src/cli.py
 ```
 The CLI will:
-- Monitor the input/ directory for new ``.txt`` files.
+- Monitor the ``input/`` directory for new ``.txt`` files.
 - Upon detecting a file, call the LLM and save the summary as a new file in ``summaries/``
 
+2. Example Workflow
+```
+# Add a text file
+echo "This is a long document I want summarized." > input/example.txt
 
+# Watch the terminal
+# A new file 'example_summary.txt' will be created in 'summaries/'
+```
+
+3. Logs
+All events and errors are logged to ``logs/events.log``, which is useful for debugging or tracking summaries over time.
+
+---
+
+## Running Tests
+To run tests with coverage, run the following command from the root directory:
+```
+PYTHONPATH=src pytest --cov=src --cov-report=term-missing
+```
